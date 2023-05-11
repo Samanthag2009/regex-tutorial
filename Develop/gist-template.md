@@ -51,11 +51,41 @@ For our purposes, we can identify ^ and $ as our anchors for the beginning and e
 
 ### Quantifiers
 
+Quantifiers tell the regex how many times variables occur in matching strings. 
+In our email address regex, we can break it down into groups:
+
+#### Capture Group 1
+
+Here we see the + symbol, a quantifier that matches the previous token at least once but up to unlimited times. This means that the first part of our email address (before the @) contains characters from the list in parenthesis, and could occur many times. 
+```
+([a-z0-9_\.-]+)
+```
+#### Capture Group 2
+
+Once again, we see the + symbol, a quantifier that matches the previous token at least once but up to unlimited times. This means that the second capture group contains exactly one @ symbol, and characters from the list in parenthesis, which could occur many times. 
+```
+@([\da-z\.-]+)
+```
+#### Capture Group 3
+
+Finlly, we see {2,6} at the end of capture group 3. This tells the regex to search for characters within the brackets, but only between 2 to 6 times.
+
+```
+([a-z\.]{2,6})
+```
 
 
 ### OR Operator
 
+The OR Operator is signified by the | symbol. it allowes the regex to consider alternatives such as the name Jim for the name James. 
+
+```
+(James|Jim) Brown
+```
+The criteria above will search for both Jim and James Brown. The regex we are using today does not contain an OR Operator. 
+
 ### Character Classes
+
 
 ### Flags
 
