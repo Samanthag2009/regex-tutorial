@@ -86,21 +86,62 @@ The criteria above will search for both Jim and James Brown. The regex we are us
 
 ### Character Classes
 
+Character Classes define the characters that are allowed in our regex. The list of allowed characters is put into square brackets and the characters within the brackets are characters that are allowed in a set of characters. Once again, let's take a look at our code broken up piece by piece.
 
-### Flags
+#### Capture Group 1
+
+Here we see those square brackets specifying characters that are allowed. in this case, the beginning of our email address can ONLY contain letters a-z, numbers 0-9, dashes and periods. The slash indicates the allowance of the period. The brackets are unbroken, indicating one set of characters.
+```
+([a-z0-9_\.-]+)
+```
+#### Capture Group 2
+
+Once again, we see our square brackets. This time we see \d, which indicates that digits 0-9 are allowed. Characters a-z are allowed, as are periods and dashes.
+```
+@([\da-z\.-]+)
+```
+#### Capture Group 3
+
+Lastly, we see the same brackets indicating that letters a-z and periods are allowed. a set containing a digit would be invalid here.
+
+```
+([a-z\.]{2,6})
+```
 
 ### Grouping and Capturing
 
-### Bracket Expressions
+Thus far, we have been breaking up bits of our regex into 3 "capturing groups," which seperate the regex into sub-groups based on the parts in parenthesis. Grouping the regex like this allows us to make the intent of our regex clearer, and applies any quantifiers or other expressions.
+
+To visualize this, here they are again:
+#### Capture Group 1
+
+```
+([a-z0-9_\.-]+)
+```
+#### Capture Group 2
+
+```
+@([\da-z\.-]+)
+```
+#### Capture Group 3
+
+```
+([a-z\.]{2,6})
+```
 
 ### Greedy and Lazy Match
+Greedy quantifiers are intended to find the longest possible string. Conversely, Lazy will match the shortest possible string. 
 
-### Boundaries
+```
+/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
+```
 
-### Back-references
+In our regex above, we see the + quantifier used three times throughout the expression, always indicating that the token can be matched unlimited times. This is a greedy match. 
 
-### Look-ahead and Look-behind
+We do not see an example of a lazy match in this instance, but quantifiers to look for include using a ? symbol after any other quantifier. 
 
 ## Author
 
-A short section about the author with a link to the author's GitHub profile (replace with your information and a link to your profile)
+### Samantha Gosselin
+
+Samantha Gosselin is a fullstack web developer based in Austin, Texas. You can view her work on [github](https://github.com/Samanthag2009) or connect on [linkedIn](https://www.linkedin.com/in/samantha-gosselin-37493517/)
